@@ -20,6 +20,23 @@ function registrarHoraTrabalhada(idFuncionario, numHoras){
     })
 }
 
+function calcularSalarioMensal(funcionario){
+    let totalHoras = 0
+    funcionario.horasTrabalhadas.map(hora => {
+        totalHoras += hora
+    })
+
+    return totalHoras * funcionario.taxaHoraria
+
+}
+
+function exibirSalarios() {
+    listaFuncionarios.forEach((funcionario) => {
+        const salario = calcularSalarioMensal(funcionario);
+        console.log(`${funcionario.nome} recebeu R$${salario.toFixed(2)}`);
+    });
+}
+
 
 
 adicionarFuncionario(1, 'João', 'Analista de Sistemas', 100)
@@ -30,4 +47,21 @@ registrarHoraTrabalhada(1, 8)
 registrarHoraTrabalhada(2, 8)
 registrarHoraTrabalhada(3, 8)
 registrarHoraTrabalhada(4, 6)
+registrarHoraTrabalhada(1, 8)
+registrarHoraTrabalhada(2, 8)
+registrarHoraTrabalhada(3, 5)
+registrarHoraTrabalhada(4, 6)
+registrarHoraTrabalhada(1, 8)
+registrarHoraTrabalhada(2, 8)
+registrarHoraTrabalhada(3, 8)
+registrarHoraTrabalhada(4, 6)
+
 console.log(listaFuncionarios)
+
+calcularSalarioMensal(listaFuncionarios[0])
+calcularSalarioMensal(listaFuncionarios[1])
+calcularSalarioMensal(listaFuncionarios[2])
+calcularSalarioMensal(listaFuncionarios[3])
+
+exibirSalarios()
+
