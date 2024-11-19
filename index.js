@@ -30,28 +30,50 @@ function calcularSalarioMensal(funcionario){
 
 }
 
+function calcularInss(funcionario){
+    let salarioBruto = calcularSalarioMensal(funcionario)
+    let inss = 0
+
+    if(salarioBruto > 4000.04){
+        inss = salarioBruto * 0.14
+    } else if(salarioBruto > 2666.69){
+        inss = salarioBruto * 0.12
+    } else if(salarioBruto > 1412.01){
+        inss = salarioBruto * 0.09
+    } else {
+        inss = salarioBruto * 0.075
+    }
+
+    if(inss > 908.85){
+        inss = 908.85
+    }
+
+    return inss
+
+}
+
 function exibirSalarios() {
     listaFuncionarios.forEach((funcionario) => {
         const salario = calcularSalarioMensal(funcionario);
         console.log(`${funcionario.nome} recebeu R$${salario.toFixed(2)}`);
+        console.log(`Descontos: INSS R$${calcularInss(funcionario).toFixed(2)}`);
     });
 }
 
 
 
-adicionarFuncionario(1, 'João', 'Analista de Sistemas', 100)
-adicionarFuncionario(2, 'Maria', 'Gerente de Projetos', 150)
+adicionarFuncionario(1, 'João', 'Analista de Sistemas', 10)
+adicionarFuncionario(2, 'Maria', 'Gerente de Projetos', 15)
 adicionarFuncionario(3, 'José', 'Desenvolvedor', 80)
-adicionarFuncionario(4, 'Ana', 'Analista de Sistemas', 100)
+adicionarFuncionario(4, 'Ana', 'Analista de Sistemas', 10)
 registrarHoraTrabalhada(1, 8)
 registrarHoraTrabalhada(2, 8)
 registrarHoraTrabalhada(3, 8)
 registrarHoraTrabalhada(4, 6)
-registrarHoraTrabalhada(1, 8)
+registrarHoraTrabalhada(1, 6)
 registrarHoraTrabalhada(2, 8)
 registrarHoraTrabalhada(3, 5)
 registrarHoraTrabalhada(4, 6)
-registrarHoraTrabalhada(1, 8)
 registrarHoraTrabalhada(2, 8)
 registrarHoraTrabalhada(3, 8)
 registrarHoraTrabalhada(4, 6)
