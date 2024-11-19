@@ -1,3 +1,5 @@
+const prompt = require('prompt-sync')();
+
 const listaFuncionarios = []
 
 function adicionarFuncionario(id, nome, cargo, taxaHoraria){
@@ -71,28 +73,49 @@ function gerarRelatorioPagamento() {
     });
 }
 
+function gerenciarFolhaPagamento(){
+    let opcao = 0
+
+    while(opcao !== 4){
+        console.log('-------GERENCIAR FOLHA DE PAGAMENTO-------\n');
+        console.log('1 - Adicionar funcionário');
+        console.log('2 - Registrar hora trabalhada');
+        console.log('3 - Exibir relatório de pagamento');
+        console.log('4 - Sair');
+
+        opcao = parseInt(prompt('Digite a opção desejada: '));
+
+        switch(opcao){
+            case 1:
+                const id = parseInt(prompt('Digite o id do funcionário: '));
+                const nome = prompt('Digite o nome do funcionário: ');
+                const cargo = prompt('Digite o cargo do funcionário: ');
+                const taxaHoraria = parseFloat(prompt('Digite a taxa horária do funcionário: '));
+                adicionarFuncionario(id, nome, cargo, taxaHoraria);
+                console.log('Funcionário adicionado com sucesso!\n');
+                break;
+
+            case 2:
+                const idFuncionario = parseInt(prompt('Digite o id do funcionário: '));
+                const numHoras = parseInt(prompt('Digite o número de horas trabalhadas: '));
+                registrarHoraTrabalhada(idFuncionario, numHoras);
+                console.log('Horas registradas com sucesso!\n');
+                break;
+
+            case 3:
+                gerarRelatorioPagamento();
+                break;
+
+            case 4:
+                console.log('Saindo...');
+                break;
+
+            default:
+                console.log('Opção inválida!\n');
+                break;
+        }
+    }
+}
 
 
-adicionarFuncionario(1, 'João', 'Analista de Sistemas', 10)
-adicionarFuncionario(2, 'Maria', 'Gerente de Projetos', 15)
-adicionarFuncionario(3, 'José', 'Desenvolvedor', 80)
-adicionarFuncionario(4, 'Ana', 'Analista de Sistemas', 10)
-registrarHoraTrabalhada(1, 8)
-registrarHoraTrabalhada(2, 8)
-registrarHoraTrabalhada(3, 8)
-registrarHoraTrabalhada(4, 6)
-registrarHoraTrabalhada(1, 6)
-registrarHoraTrabalhada(2, 8)
-registrarHoraTrabalhada(3, 5)
-registrarHoraTrabalhada(4, 6)
-registrarHoraTrabalhada(2, 8)
-registrarHoraTrabalhada(3, 8)
-registrarHoraTrabalhada(4, 6)
-
-calcularSalarioMensal(listaFuncionarios[0])
-calcularSalarioMensal(listaFuncionarios[1])
-calcularSalarioMensal(listaFuncionarios[2])
-calcularSalarioMensal(listaFuncionarios[3])
-
-gerarRelatorioPagamento()
-
+gerenciarFolhaPagamento();
