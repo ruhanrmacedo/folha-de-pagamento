@@ -1,26 +1,38 @@
-Visão Geral do Projeto
+# **Sistema de Folha de Pagamento**
 
-O projeto é um Sistema de Folha de Pagamento que gerencia informações de funcionários, calcula salários com base em horas trabalhadas e taxas de pagamento, e gera relatórios de pagamento. O objetivo é criar um sistema básico de folha de pagamento que permite adicionar funcionários, registrar horas trabalhadas, calcular salários e exibir um relatório de pagamento.
+Este projeto é um sistema básico de **folha de pagamento**, desenvolvido com o objetivo principal de aprendizado. Ele permite gerenciar informações de funcionários, calcular salários com base nas horas trabalhadas e gerar relatórios simples de pagamento.
 
-Estrutura do Mini-Projeto
-Cadastro de Funcionários
+---
 
-Nome do funcionário
+## **Funcionalidades**
+- **Adicionar Funcionários**: Registre informações como ID, nome, cargo e taxa horária.
+- **Registrar Horas Trabalhadas**: Acompanhe as horas trabalhadas de cada funcionário.
+- **Calcular Salários**: Inclui cálculos de salário bruto, descontos de INSS e salário líquido.
+- **Gerar Relatórios**: Mostra informações detalhadas sobre pagamento.
 
-Cargo
+---
 
-Taxa horária
+## **Como Rodar o Projeto**
 
-Registro de Horas Trabalhadas
+1. **Instale o Node.js** se ainda não tiver: [Download Node.js](https://nodejs.org/)
+2. **Clone este repositório**:
+   ```bash
+   git clone https://github.com/ruhanrmacedo/folha-de-pagamento
+   ```
+3. **Entre na pasta do projeto**:
+   ```bash
+   cd sistema-folha-pagamento
+   ```
+4. **Instale a dependência necessária**:
+   ```bash
+   npm install prompt-sync
+   ```
+5. **Execute o programa:
+   ```bash
+   node index.js
+   ```
+## **Possíveis Melhorias Futuras**
+- Persistência de Dados: Salvar as informações em um arquivo ou banco de dados.
+- Exportação de Relatórios: Permitir gerar relatórios em PDF ou CSV.
+- Interface Gráfica: Criar uma interface amigável para facilitar o uso.
 
-Registro diário das horas trabalhadas por funcionário
-
-Cálculo de Salário
-
-Cálculo de salário semanal/mensal com base nas horas trabalhadas
-
-Cálculo de horas extras, se aplicável
-
-Relatório de Pagamento
-
-Exibição do pagamento total e detalhes de cada funcionário
