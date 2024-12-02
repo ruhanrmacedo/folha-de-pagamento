@@ -1,12 +1,14 @@
+import { randomUUID } from "crypto";
+
 class Funcionario {
-    id: number;
+    id: string;
     nome: string;
     cargo: string;
     taxaHoraria: number;
     horasTrabalhadas: number;
 
-    constructor(id: number, nome: string, cargo: string, taxaHoraria: number, horasTrabalhadas: number) {
-        this.id = id;
+    constructor(nome: string, cargo: string, taxaHoraria: number, horasTrabalhadas: number) {
+        this.id = randomUUID().substring(0, 4);
         this.nome = nome;
         this.cargo = cargo;
         this.taxaHoraria = taxaHoraria;
@@ -41,6 +43,14 @@ class Funcionario {
     
         return inss
     
+    }
+    
+    exibirInformacoes(): void {
+        console.log('-------INFORMAÇÕES DO FUNCIONÁRIO-------');
+        console.log(`ID: ${this.id}`);
+        console.log(`Nome: ${this.nome}`);
+        console.log(`Cargo: ${this.cargo}`);
+        console.log(`-----------------------------\n`);
     }
 }
 
