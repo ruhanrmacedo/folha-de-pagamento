@@ -20,6 +20,28 @@ class Funcionario {
     calcularSalarioMensal(): number {
         return this.taxaHoraria * this.horasTrabalhadas;
     }
+
+    calcularInss(funcionario: Funcionario): number {
+        const salarioBruto = funcionario.calcularSalarioMensal();
+        let inss = 0
+    
+        if(salarioBruto > 4000.04){
+            inss = salarioBruto * 0.14
+        } else if(salarioBruto > 2666.69){
+            inss = salarioBruto * 0.12
+        } else if(salarioBruto > 1412.01){
+            inss = salarioBruto * 0.09
+        } else {
+            inss = salarioBruto * 0.075
+        }
+    
+        if(inss > 908.85){
+            inss = 908.85
+        }
+    
+        return inss
+    
+    }
 }
 
 export default Funcionario;

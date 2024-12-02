@@ -25,28 +25,6 @@ function calcularSalarioMensal(funcionario: Funcionario): number {
     return funcionario.calcularSalarioMensal();
 }
 
-function calcularInss(funcionario: Funcionario): number {
-    const salarioBruto = funcionario.calcularSalarioMensal();
-    let inss = 0
-
-    if(salarioBruto > 4000.04){
-        inss = salarioBruto * 0.14
-    } else if(salarioBruto > 2666.69){
-        inss = salarioBruto * 0.12
-    } else if(salarioBruto > 1412.01){
-        inss = salarioBruto * 0.09
-    } else {
-        inss = salarioBruto * 0.075
-    }
-
-    if(inss > 908.85){
-        inss = 908.85
-    }
-
-    return inss
-
-}
-
 function testarFuncionalidades(): void {
     // Adiciona funcionários
     adicionarFuncionario(1, 'João', 'Desenvolvedor', 30);
@@ -63,7 +41,7 @@ function testarFuncionalidades(): void {
     console.log('-------Testar Funcionalidades-------\n');
     listaFuncionarios.forEach((funcionario) => {
         const salarioBruto = funcionario.calcularSalarioMensal();
-        const inss = calcularInss(funcionario);
+        const inss = funcionario.calcularInss(funcionario);
 
         console.log(`Nome: ${funcionario.nome}`);
         console.log(`Cargo: ${funcionario.cargo}`);
