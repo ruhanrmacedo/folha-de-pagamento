@@ -17,23 +17,28 @@ function testarAdicionarFuncionario() {
     adicionarFuncionario(3, 'José', 'Analista de Sistemas', 35);
 }
 
-console.log('Testando adicionar funcionário...');
 testarAdicionarFuncionario();
 
-listaFuncionarios.forEach((funcionario) => {
-    console.log(funcionario);
-});
-
-
-
-/*function registrarHoraTrabalhada(idFuncionario, numHoras){
-    listaFuncionarios.map((funcionario) => {
-        if(funcionario.id === idFuncionario){
-            funcionario.horasTrabalhadas.push(numHoras)
-        }
-    })
+function registrarHoraTrabalhada(idFuncionario: number, numHoras: number): void {
+    const funcionario = listaFuncionarios.find((funcionario) => funcionario.id === idFuncionario);
+    if (funcionario) {
+        funcionario.registrarHoras(numHoras);
+        console.log('Horas registradas com sucesso para ${funcionario.nome}: ${numHoras} horas\n');
+    } else {
+        console.log('Funcionário não encontrado!\n');
+    }
 }
 
+console.log('Testando registrar hora trabalhada...');
+registrarHoraTrabalhada(1, 10);
+registrarHoraTrabalhada(2, 15);
+registrarHoraTrabalhada(3, 20);
+
+listaFuncionarios.forEach((funcionario) => {
+    console.log(`ID: ${funcionario.id}, Nome: ${funcionario.nome}, Cargo: ${funcionario.cargo}, Horas trabalhadas: ${funcionario.horasTrabalhadas}`);
+});
+
+/*
 function calcularSalarioMensal(funcionario){
     let totalHoras = 0
     funcionario.horasTrabalhadas.map(hora => {
