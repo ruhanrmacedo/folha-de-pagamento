@@ -1,20 +1,32 @@
+import Funcionario from './classes/Funcionario';
+
 const prompt = require('prompt-sync')();
 
-const listaFuncionarios = []
+const listaFuncionarios: Funcionario[] = [];
 
-function adicionarFuncionario(id, nome, cargo, taxaHoraria){
-    let funcionario = {
-        id: id,
-        nome: nome,
-        cargo: cargo,
-        taxaHoraria: taxaHoraria,
-        horasTrabalhadas: []
-    }
+function adicionarFuncionario(id: number, nome: string, cargo: string, taxaHoraria: number): void {
+    const funcionario = new Funcionario(id, nome, cargo, taxaHoraria, 0)
 
     listaFuncionarios.push(funcionario)
+    console.log('Funcionário adicionado com sucesso!\n');
 }
 
-function registrarHoraTrabalhada(idFuncionario, numHoras){
+function testarAdicionarFuncionario() {
+    adicionarFuncionario(1, 'João', 'Desenvolvedor', 30);
+    adicionarFuncionario(2, 'Maria', 'Designer', 25);
+    adicionarFuncionario(3, 'José', 'Analista de Sistemas', 35);
+}
+
+console.log('Testando adicionar funcionário...');
+testarAdicionarFuncionario();
+
+listaFuncionarios.forEach((funcionario) => {
+    console.log(funcionario);
+});
+
+
+
+/*function registrarHoraTrabalhada(idFuncionario, numHoras){
     listaFuncionarios.map((funcionario) => {
         if(funcionario.id === idFuncionario){
             funcionario.horasTrabalhadas.push(numHoras)
@@ -115,7 +127,7 @@ function gerenciarFolhaPagamento(){
                 break;
         }
     }
-}
+}*/
 
 
-gerenciarFolhaPagamento();
+//gerenciarFolhaPagamento();
