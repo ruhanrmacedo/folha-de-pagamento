@@ -21,10 +21,6 @@ function registrarHoraTrabalhada(idFuncionario: number, numHoras: number): void 
     }
 }
 
-function calcularSalarioMensal(funcionario: Funcionario): number {
-    return funcionario.calcularSalarioMensal();
-}
-
 function testarFuncionalidades(): void {
     // Adiciona funcionários
     adicionarFuncionario(1, 'João', 'Desenvolvedor', 30);
@@ -35,10 +31,13 @@ function testarFuncionalidades(): void {
     registrarHoraTrabalhada(1, 10);
     registrarHoraTrabalhada(2, 15);
     registrarHoraTrabalhada(3, 20);
+}
 
-    // Calcula salário mensal
+testarFuncionalidades();
 
-    console.log('-------Testar Funcionalidades-------\n');
+
+function gerarRelatorioPagamento() {
+    console.log('-------GERAR RELATÓRIO DE PAGAMENTO-------\n');
     listaFuncionarios.forEach((funcionario) => {
         const salarioBruto = funcionario.calcularSalarioMensal();
         const inss = funcionario.calcularInss(funcionario);
@@ -46,14 +45,15 @@ function testarFuncionalidades(): void {
         console.log(`Nome: ${funcionario.nome}`);
         console.log(`Cargo: ${funcionario.cargo}`);
         console.log(`Horas trabalhadas: ${funcionario.horasTrabalhadas}`);
-        console.log(`Salário bruto: R$${salarioBruto.toFixed(2)}`);
         console.log(`Desconto INSS: R$${inss.toFixed(2)}`);
+        console.log(`Salário bruto: R$${salarioBruto.toFixed(2)}`);
         console.log(`Salário líquido: R$${(salarioBruto - inss).toFixed(2)}`);
-        console.log('----------------------------------\n');
+        console.log('------------------------------------------\n');
     });
 }
 
-testarFuncionalidades();
+
+gerarRelatorioPagamento();
 
 /*
 function gerarRelatorioPagamento() {
