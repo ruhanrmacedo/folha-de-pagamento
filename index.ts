@@ -11,14 +11,6 @@ function adicionarFuncionario(id: number, nome: string, cargo: string, taxaHorar
     console.log('Funcionário adicionado com sucesso!\n');
 }
 
-function testarAdicionarFuncionario() {
-    adicionarFuncionario(1, 'João', 'Desenvolvedor', 30);
-    adicionarFuncionario(2, 'Maria', 'Designer', 25);
-    adicionarFuncionario(3, 'José', 'Analista de Sistemas', 35);
-}
-
-testarAdicionarFuncionario();
-
 function registrarHoraTrabalhada(idFuncionario: number, numHoras: number): void {
     const funcionario = listaFuncionarios.find((funcionario) => funcionario.id === idFuncionario);
     if (funcionario) {
@@ -29,26 +21,36 @@ function registrarHoraTrabalhada(idFuncionario: number, numHoras: number): void 
     }
 }
 
-console.log('Testando registrar hora trabalhada...');
-registrarHoraTrabalhada(1, 10);
-registrarHoraTrabalhada(2, 15);
-registrarHoraTrabalhada(3, 20);
-
-listaFuncionarios.forEach((funcionario) => {
-    console.log(`ID: ${funcionario.id}, Nome: ${funcionario.nome}, Cargo: ${funcionario.cargo}, Horas trabalhadas: ${funcionario.horasTrabalhadas}`);
-});
-
-/*
-function calcularSalarioMensal(funcionario){
-    let totalHoras = 0
-    funcionario.horasTrabalhadas.map(hora => {
-        totalHoras += hora
-    })
-
-    return totalHoras * funcionario.taxaHoraria
-
+function calcularSalarioMensal(funcionario: Funcionario): number {
+    return funcionario.calcularSalarioMensal();
 }
 
+function testarFuncionalidades(): void {
+    // Adiciona funcionários
+    adicionarFuncionario(1, 'João', 'Desenvolvedor', 30);
+    adicionarFuncionario(2, 'Maria', 'Designer', 25);
+    adicionarFuncionario(3, 'José', 'Analista de Sistemas', 35);
+
+    // Adiciona horas trabalhadas
+    registrarHoraTrabalhada(1, 10);
+    registrarHoraTrabalhada(2, 15);
+    registrarHoraTrabalhada(3, 20);
+
+    // Calcula salário mensal
+
+    console.log('-------Testar Funcionalidades-------\n');
+    listaFuncionarios.forEach((funcionario) => {
+        console.log(`Nome: ${funcionario.nome}`);
+        console.log(`Cargo: ${funcionario.cargo}`);
+        console.log(`Horas trabalhadas: ${funcionario.horasTrabalhadas}`);
+        console.log(`Salário mensal: R$${calcularSalarioMensal(funcionario).toFixed(2)}`);
+        console.log('----------------------------------\n');
+    });
+}
+
+testarFuncionalidades();
+
+/*
 function calcularInss(funcionario){
     let salarioBruto = calcularSalarioMensal(funcionario)
     let inss = 0
